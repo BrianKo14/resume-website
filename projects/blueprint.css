@@ -17,15 +17,19 @@ body {
 	pointer-events: none;
 }
 
+#background img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
 /* PROJECT INFO */
 
 #project-info {
 	position: absolute;
-	bottom: 20px;
+	bottom: 60px;
 	left: 60px;
 	width: 700px;
-	height: 300px;
-	/* background-color: white; */
 }
 
 #title {
@@ -81,12 +85,53 @@ body {
 
 .slider {
 	position: absolute;
-	filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
 	transform-origin: center;
 	z-index: 2;
 	height: 300px;
+	touch-action: none;
 }
 
 .slider img {
+	filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
 	height: 300px;
+}
+
+
+/* MOBILE PORTRAIT */
+
+@media only screen and (max-width: 600px) {
+	#background {
+		top: 20px;
+		left: 20px;
+		width: calc(100% - 40px);
+		height: calc(100% - 40px);
+	}
+
+	#project-info {
+		bottom: 30px;
+		left: 30px;
+		width: 80%;
+	}
+
+	#title {
+		font-size: 20px;
+	}
+
+	#description {
+		font-size: 14px;
+		width: 90%;
+	}
+
+	#tags {
+		/* margin: 10px; */
+	}
+
+	.tag {
+		padding: 2px 5px;
+		font-size: 10px;
+	}
+
+	.slider img {
+		height: 200px;
+	}
 }
