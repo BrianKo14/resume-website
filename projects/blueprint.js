@@ -14,7 +14,7 @@ function getRandomInRange(min, max) {
 /** Get random position in top-left, top-right or bottom-right quadrant in the canvas. */
 function getRandomInThreeQuadrants(width, height) {
 	const quadrant = Math.floor(Math.random() * 3);
-	const _padding = 40;
+	const _padding = 80;
 
 	switch (quadrant) {
 		case 0:
@@ -31,44 +31,23 @@ function getRandomInThreeQuadrants(width, height) {
     
 function scatterElements(elements, width, height) {
 	elements.forEach(element => {
-		const [x, y] = getRandomInThreeQuadrants(width, height);
+		let [x, y] = getRandomInThreeQuadrants(width, height);
+		let rotation = getRandomInRange(-20, 20);
 		
-		// element.style.left = `${x}px`;
-		// element.style.top = `${y}px`;
-		element.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+		element.style.transform = 'translate(' + x + 'px, ' + y + 'px) rotate(' + rotation + 'deg)'; // Apply rotation to the element
 		element.setAttribute('data-x', x);
 		element.setAttribute('data-y', y);
+		element.setAttribute('data-rotation', rotation);
 	});	
 }
-
-// const dots_div = document.getElementById('dots');
-
-// for (let i = 0; i < 1000; i++) {
-// 	const [x, y] = getRandomInThreeQuadrants(window.innerWidth, window.innerHeight);
-// 	// console.log(Math.round(x), Math.round(y));
-// 	const element = document.createElement('div');
-// 	element.classList.add('test');
-// 	element.style.top = `${y}px`;
-// 	element.style.left = `${x}px`;
-// 	element.setAttribute('data-x', x);
-// 	element.setAttribute('data-y', y);
-
-// 	// Add label to show position
-// 	const label = document.createElement('span');
-// 	label.innerText = `(${x}px, ${y}px)`;
-// 	label.classList.add('position-label');
-// 	label.style.fontSize = '8px'; // Set the font size to be really small
-// 	element.appendChild(label);
-// 	dots_div.appendChild(element);
-
-// 	console.log(window.innerWidth, window.innerHeight);
-// }
 
 scatterElements(sliders, window.innerWidth, window.innerHeight);
 
 
 
 // Scattered elements interactability
+
+var heighestZIndex = 5;
 
 interact('.slider')
 .draggable({
@@ -84,18 +63,42 @@ interact('.slider')
 
 	// Update position
 	listeners: {
-		move (event) {
-			var target = event.target
+		move: (event) => {
+			const target = event.target;
+			event.preventDefault();
+			
+			let x = parseFloat(target.getAttribute('data-x')) + event.dx;
+			let y = parseFloat(target.getAttribute('data-y')) + event.dy;
+			let rotation = parseFloat(target.getAttribute('data-rotation'));
 
-			var x = (parseFloat(target.getAttribute('data-x'))) + event.dx
-			var y = (parseFloat(target.getAttribute('data-y'))) + event.dy
+			// Translate the element
+			target.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
 
-			// translate the element
-			target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+			anime({
+				targets: target.children[0],
+				rotate: -rotation,
+				scale: 1.2,
+				duration: 700
+			});
 
-			// update the posiion attributes
-			target.setAttribute('data-x', x)
-			target.setAttribute('data-y', y)
+			// Update the position attributes
+			target.setAttribute('data-x', x);
+			target.setAttribute('data-y', y);
+
+			// Move to top
+			target.style.zIndex = heighestZIndex++;
+		},
+
+		end: (event) => {
+			const target = event.target;
+
+			// Snap back to original position
+			anime({
+				targets: target.children[0],
+				scale: 1,
+				duration: 1000,
+				easing: 'easeOutQuint'
+			});
 		}
 	}
 });

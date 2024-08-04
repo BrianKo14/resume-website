@@ -1,7 +1,7 @@
 
 body {
 	background-color: #547ABD;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 #background {
@@ -82,20 +82,11 @@ body {
 .slider {
 	position: absolute;
 	filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
-	/* transform: translate(-50%, -50%); */
+	transform-origin: center;
+	z-index: 2;
+	height: 300px;
 }
 
-.test {
-	position: absolute;
-	height: 5px;
-	width: 5px;
-	background-color: black;
-	margin: 0;
-	padding: 0;
-}
-
-#dots {
-	position: absolute;
-	height: 100%;
-	width: 100%;
+.slider img {
+	height: 300px;
 }
