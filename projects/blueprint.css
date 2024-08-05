@@ -150,7 +150,7 @@ body {
 
 	position: absolute;
 	left: 50%;
-	bottom: 15%;
+	top: 75%;
 	transform: translateX(-50%);
 }
 

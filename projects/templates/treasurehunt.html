@@ -6,14 +6,14 @@
 		<span class="tag">C#</span>
 		<span class="tag">Blender</span>
 	</div>
-	<p id="description">The island is a massive 25 km² (9.7 sq mi). A lush, bright green world set on an endless ocean. The player lands on the Upper Pleateau, in a clearing with a view to the Volcano’s Summit, and they are free to roam. Roam through forests, beaches, caves, shipwrecks and ancient temples. The goal? The fancy of every childhood: a treasure hunt—puzzles for a way out.</p>
+	<p id="description">The Treasure Hunt is a preliminary model for an immersive adventure game set on a deserted island. It's a personal project that I started in 2020, and which quickly outgrew its origins. Built mostly in Unity, the island is a massive 25 km² (9.7 sq mi). A lush, bright green world set on an endless ocean. The player lands on the Upper Pleateau, in a clearing with a view to the Volcano’s Summit, and they are free to roam. Roam through forests, beaches, caves, shipwrecks and ancient temples. The goal? The fancy of every childhood: a treasure hunt—puzzles for a way out.</p>
 </div>
 
 <div id="project-scatter" class="select-disable">
 	<div class="slider"
 		description="The map would tell the story. The island is the subject of the game, and the purpose is the exploration of its landmarks. This is an early concept for its design, the hope is to fill it with all the mystery and wonder that could drive the player to discover. Ideas are plentiful: what happened before the player arrived? An ancient civilization, previous explorers, pirates, and a Lockheed Electra 10E with a letter addressed to Amelia Earhart?"
 	>
-		<img src="../../media/Projects/treasure-hunt/annotated-map.png" alt=""/>
+		<img src="../../media/Projects/treasure-hunt/annotated-map.jpg" alt=""/>
 	</div>
 	<div class="slider"
 		description="Night brings changes to the island. A light mist rolls in, which, in the name of practicality, provides some visibility to the player while not spoiling the pale of darkness."
@@ -26,7 +26,7 @@
 		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-06-07 at 22.45.06.png" alt=""/>
 	</div>
 	<div class="slider"
-		description="I love this shot. The lion statue is a surprise, possibly among the first the player will encounter."
+		description="I love this shot. The lion statue is a surprise, possibly among the first the player will encounter. I actually modeled volumetric light shafts into this particular scene."
 	>
 		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-06-27 at 18.12.17.png" alt=""/>
 	</div>
@@ -41,11 +41,39 @@
 		<img src="../../media/Projects/treasure-hunt/Screenshot 2022-06-30 at 13.58.44.png" alt=""/>
 	</div>
 	<div class="slider"
-		description="A short clip showcasting some of the finished regions of the island. In order of appearence: spawn area right after landing, a cave by the ridge at the southeast of the South Anvil, the beach at the Southeast Islet, the hill at the Southeast Islet, and the lion statue at the Upper Plateau."
+		description="A short clip showcasting some of the finished regions of the island. In order of appearence: (1) spawn area right after landing, (2) a cave by the cliff at the east of the South Anvil, (3) the beach at the Southeast Islet, (4) the forested hill at the Southeast Islet, and (5) the lion statue at the Upper Plateau."
 	>
 		<div class="video-container">
 			<video src="../../media/Projects/treasure-hunt/Done1.mp4"></video>
 			<img class="play-button" src="../../media/Projects page/play_button.svg"></img>
+		</div>
+	</div>
+	<div class="slider"
+		description="Rendering 25 km² of rocks and trees is a challenge. Two solutions: LOD and occlusion culling. The first is a technique that reduces the detail of objects as they move away from the camera by replacing them with simpler models. The second is the hiding of objects that are not visible to the camera. I divided the island into 16 regions which I further subdivided into smaller tiles. Those that the player cannot see, are not rendered. The result is a world that runs smoothly on a mid-range computer."
+	>
+		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-06-10 at 19.40.23.png" alt=""/>
+	</div>
+	<div class="slider"
+		description="This was actually the first time I made something like this. I didn't have a lot of experience using Unity or 3D modeling yet. This picture shows my first attempt at level design using prefab assets I got from the internet. Quite awful, but it improved rapidly."
+	>
+		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-05-24 at 14.20.13.png" alt=""/>
+	</div>
+	<div class="slider"
+		description="The first thing I did was to draw an island on a whiteboard as means to present my idea to others. Later I scanned the drawing and set it flat on a plane in Unity. I manually extruded the contours of this simple topographic map into a 3D model of the island."
+	>
+		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-05-20 at 20.20.30.png" alt=""/>
+	</div>
+	<div class="slider"
+		description="I used a small figurine for getting a sense of size. I designed the island with models I acquired from the internet as well as many I made myself. This image shows a high pass leading from the South Anvil to the cliff that borders it."
+	>
+		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-06-29 at 23.30.56.png" alt=""/>
+	</div>
+	<div class="slider"
+		description="Fanciful video of the helicopter arriving at the island."
+	>
+		<div class="video-container">
+			<video src="../../media/Projects/treasure-hunt/movie21h11m015.mp4"></video>
+			<img class="play-button" src="../../media/Projects page/play_button.svg" alt=""></img>
 		</div>
 	</div>
 </div>

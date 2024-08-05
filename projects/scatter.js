@@ -144,7 +144,7 @@ interact('.slider')
 })
 
 // DOUBLE TAP
-.on('doubletap', (event) => { if (!isMobile.matches) {
+.on('doubletap', (event) => { if (!isMobile.matches && currentSelected === null) {
 	const target = event.target.closest('.slider');
 	const firstChild = target.children[0];
 	event.preventDefault();
@@ -231,6 +231,9 @@ function putBackSlider(target) {
 
 	// Hide video controls
 	hideVideoControls(target.children[0]);
+
+	if (currentSelected === null) return;
+	currentSelected = null;
 }
 
 
@@ -282,7 +285,4 @@ function clickOutsideModal() {
 	});
 
 	putBackSlider(currentSelected);
-
-	if (currentSelected === null) return;
-	currentSelected = null;
 }
