@@ -211,6 +211,8 @@ function moveSliderToCenter(target) {
 function showVideoControls(target) {
 	if (target.classList.contains('video-container')) {
 		target.children[0].controls = true;
+		target.children[0].play();
+		target.querySelectorAll('.play-button')[0].style.display = 'none';
 	}
 }
 
@@ -218,6 +220,7 @@ function hideVideoControls(target) {
 	if (target.classList.contains('video-container')) {
 		target.children[0].controls = false;
 		target.children[0].pause();
+		target.querySelectorAll('.play-button')[0].style.display = 'block';
 	}
 }
 

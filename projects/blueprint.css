@@ -123,9 +123,7 @@ body {
 	transform: translate(-50%, -50%);
 	width: 50px;
 	height: 50px;
-	/* background-color: white; */
-	fill: white;
-	z-index: inherit;
+	display: block;
 }
 
 #modal {
