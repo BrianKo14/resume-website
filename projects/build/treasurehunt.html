@@ -27,7 +27,7 @@
 		<span class="tag">C#</span>
 		<span class="tag">Blender</span>
 	</div>
-	<p id="description">The Treasure Hunt is a preliminary model for an immersive adventure game set on a deserted island. It's a personal project that I started in 2020, and which quickly outgrew its origins. Built mostly in Unity, the island is a massive 25 km² (9.7 sq mi). A lush, bright green world set on an endless ocean. The player lands on the Upper Pleateau, in a clearing with a view to the Volcano’s Summit, and they are free to roam. Roam through forests, beaches, caves, shipwrecks and ancient temples. The goal? The fancy of every childhood: a treasure hunt—puzzles for a way out.</p>
+	<p id="description">This is a preliminary model for an immersive adventure game set on a deserted island. It's a personal project that I started in 2020, and which quickly outgrew its origins. Built mostly in Unity, the island is a massive 25 km² (9.7 sq mi). A lush, bright green world set on an endless ocean. The player lands on the Upper Pleateau, in a clearing with a view to the Volcano’s Summit, and they are free to roam. Roam through forests, beaches, caves, shipwrecks and ancient temples. The goal? The fancy of every childhood: a treasure hunt—puzzles for a way out.</p>
 </div>
 
 <div id="project-scatter" class="select-disable">
@@ -39,7 +39,7 @@
 	<div class="slider"
 		description="Night brings changes to the island. A light mist rolls in, which, in the name of practicality, provides some visibility to the player while not spoiling the pale of darkness."
 	>
-		<img src="../../media/Projects/treasure-hunt/8C9A4172-A2CC-4C3B-A23C-323B57E3F23A.JPG" alt=""/>
+		<img magic-hover magic-hover__square src="../../media/Projects/treasure-hunt/8C9A4172-A2CC-4C3B-A23C-323B57E3F23A.JPG" alt=""/>
 	</div>
 	<div class="slider"
 		description="This is the Southeast Islet, the first part of the island I designed in its entirety. The player must walk through shallow waters to reach it. It is surrounded by rock formations, and the player can walk up its hill into a small forest. There's a wooden cross on the beach that could later be part of a puzzle."
@@ -80,7 +80,7 @@
 		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-05-24 at 14.20.13.png" alt=""/>
 	</div>
 	<div class="slider"
-		description="The first thing I did was to draw an island on a whiteboard as means to present my idea to others. Later I scanned the drawing and set it flat on a plane in Unity. I manually extruded the contours of this simple topographic map into a 3D model of the island."
+		description="The first thing I did was to draw an island on a whiteboard as means to present my idea to others. Later I scanned the drawing and set it flat on a plane in Unity. I manually extruded the contours of this simple topographic map into a 3D model."
 	>
 		<img src="../../media/Projects/treasure-hunt/Screenshot 2020-05-20 at 20.20.30.png" alt=""/>
 	</div>
@@ -107,6 +107,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<!-- Interact.js -->
 	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+	<!-- MagicMouse.js -->
+	<script src="https://res.cloudinary.com/veseylab/raw/upload/v1684982764/magicmouse-2.0.0.cdn.min.js"></script>
+	<script>
+		// document.querySelectorAll('.slider').forEach(element => {
+		// 	const firstChild = element.firstElementChild;
+		// 	if (firstChild) {
+		// 		firstChild.classList.add('magic-hover');
+		// 		// firstChild.classList.add('magic-hover__square');
+		// 	}
+		// });
+
+		magicMouse({
+			"outerStyle": "circle",
+			"hoverEffect": "pointer-overlay", // TODO: circle-move
+			"hoverItemMove": false,
+			"defaultCursor": false,
+			"outerWidth": 30,
+			"outerHeight": 30
+		});
+	</script>
 
 	<script src="../scatter.js"></script>
 </body>

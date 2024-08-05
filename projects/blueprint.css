@@ -154,6 +154,14 @@ body {
 	transform: translateX(-50%);
 }
 
+#magicPointer {
+	z-index: 1000;
+}
+
+#magicMouseCursor {
+	/* transform: rotate(45deg) !important; */
+}
+
 
 /* MOBILE PORTRAIT */
 

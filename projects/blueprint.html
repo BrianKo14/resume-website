@@ -29,6 +29,26 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<!-- Interact.js -->
 	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+	<!-- MagicMouse.js -->
+	<script src="https://res.cloudinary.com/veseylab/raw/upload/v1684982764/magicmouse-2.0.0.cdn.min.js"></script>
+	<script>
+		// document.querySelectorAll('.slider').forEach(element => {
+		// 	const firstChild = element.firstElementChild;
+		// 	if (firstChild) {
+		// 		firstChild.classList.add('magic-hover');
+		// 		// firstChild.classList.add('magic-hover__square');
+		// 	}
+		// });
+
+		magicMouse({
+			"outerStyle": "circle",
+			"hoverEffect": "pointer-overlay", // TODO: circle-move
+			"hoverItemMove": false,
+			"defaultCursor": false,
+			"outerWidth": 30,
+			"outerHeight": 30
+		});
+	</script>
 
 	<script src="../scatter.js"></script>
 </body>

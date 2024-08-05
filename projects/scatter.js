@@ -74,6 +74,7 @@ var heighestZIndex = sliders.length + _baseZIndex;
 var currentSelected = null;
 
 interact('.slider')
+.styleCursor(false)
 .draggable({
 	inertia: true,
 
@@ -176,6 +177,16 @@ interact('.slider')
 	showVideoControls(firstChild);
 } });
 
+// Hover over .slider element
+sliders.forEach(slider => {
+	slider.addEventListener('mouseenter', () => {
+		document.getElementById('magicMouseCursor').style.opacity = 0;
+	});
+	slider.addEventListener('mouseleave', () => {
+		document.getElementById('magicMouseCursor').style.opacity = 1;
+	});
+});
+
 function moveSliderToCenter(target) {
 	const targetParent = target.parentElement;
 
@@ -235,8 +246,6 @@ function putBackSlider(target) {
 	if (currentSelected === null) return;
 	currentSelected = null;
 }
-
-
 
 // Modal
 
