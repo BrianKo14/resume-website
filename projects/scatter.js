@@ -1,5 +1,6 @@
 
 const isMobile = window.matchMedia('(max-width: 600px)'); // i.e. CSS mobile breakpoint
+const _baseZIndex = 3; // Base z-index for sliders
 
 // Selectors
 
@@ -54,6 +55,7 @@ function scatterElements(elements, width, height) {
 		element.setAttribute('data-x', x);
 		element.setAttribute('data-y', y);
 		element.setAttribute('data-rotation', rotation);
+		element.style.zIndex = getRandomInRange(_baseZIndex, elements.length + _baseZIndex);
 	});	
 }
 
@@ -65,10 +67,11 @@ scatterElements(sliders, window.innerWidth, window.innerHeight);
 	Scattered elements interactability
 
 	- The parent '.slider' element is draggable.
-	- The child '.slider img' element is enlarged and (un)rotated.
+	- Its [first child] is enlarged and (un)rotated. The [first child] can be a container for anything or simply an img.
 */
 
-var heighestZIndex = 5;
+var heighestZIndex = sliders.length + _baseZIndex;
+var currentSelected = null;
 
 interact('.slider')
 .draggable({
@@ -86,6 +89,8 @@ interact('.slider')
 
 	// Update position
 	listeners: {
+
+		// MOVE: Update position attributes
 		move: (event) => {
 			const target = event.target;
 			event.preventDefault();
@@ -102,6 +107,7 @@ interact('.slider')
 			target.setAttribute('data-y', y);
 		},
 
+		// START MOVE
 		start: (event) => {
 			const target = event.target;
 
@@ -115,13 +121,13 @@ interact('.slider')
 				easing: 'easeOutQuint'
 			});
 
-			// Hide modal
-			hideModal();
-
 			// Move to top
 			target.style.zIndex = heighestZIndex++;
+
+			putBackSlider(target);
 		},
 
+		// END MOVE
 		end: (event) => {
 			const target = event.target;
 
@@ -137,26 +143,46 @@ interact('.slider')
 	}
 })
 
-// Double tap slider
+// DOUBLE TAP
 .on('doubletap', (event) => { if (!isMobile.matches) {
-	const target = event.target;
-	const targetParent = target.parentElement;
+	const target = event.target.closest('.slider');
+	const firstChild = target.children[0];
 	event.preventDefault();
 
-	let x = parseFloat(targetParent.getAttribute('data-x'));
-	let y = parseFloat(targetParent.getAttribute('data-y'));
-	let rotation = parseFloat(targetParent.getAttribute('data-rotation'));
+	let rotation = parseFloat(target.getAttribute('data-rotation'));
 
 	// Enlargen and rotate
 	anime({
-		targets: target,
+		targets: firstChild,
 		scale: 1.8,
 		rotate: -rotation,
 		duration: 1000,
 		easing: 'easeOutQuint'
 	});
 
-	// Translate the element
+	// Save current selected
+	currentSelected = target;
+
+	// Move to center
+	moveSliderToCenter(firstChild);
+
+	// Show modal
+	showModal();
+
+	// Move to top
+	target.style.zIndex = heighestZIndex++;
+
+	// Show video controls
+	showVideoControls(firstChild);
+} });
+
+function moveSliderToCenter(target) {
+	const targetParent = target.parentElement;
+
+	let x = parseFloat(targetParent.getAttribute('data-x'));
+	let y = parseFloat(targetParent.getAttribute('data-y'));
+	let rotation = parseFloat(targetParent.getAttribute('data-rotation'));
+
 	let new_x = window.innerWidth / 2 - target.offsetWidth / 2;
 	let new_y = window.innerHeight / 2 - target.offsetHeight / 2 - 50;
 
@@ -173,7 +199,6 @@ interact('.slider')
 			// Update position from current to center
 			let update_x = x + diff_x * progress / 100;
 			let update_y = y + diff_y * progress / 100;
-			// console.log(progress, x, y, new_x, new_y);
 			targetParent.style.transform = `translate(${update_x}px, ${update_y}px) rotate(${rotation}deg)`;
 
 			// Update the position attributes
@@ -181,22 +206,37 @@ interact('.slider')
 			targetParent.setAttribute('data-y', update_y);
 		}
 	});
+}
 
-	// Show modal
-	showModal(target);
+function showVideoControls(target) {
+	if (target.classList.contains('video-container')) {
+		target.children[0].controls = true;
+	}
+}
 
-	// Move to top
-	targetParent.style.zIndex = heighestZIndex++;
-} });
+function hideVideoControls(target) {
+	if (target.classList.contains('video-container')) {
+		target.children[0].controls = false;
+		target.children[0].pause();
+	}
+}
+
+function putBackSlider(target) {
+
+	// Hide modal
+	hideModal();
+
+	// Hide video controls
+	hideVideoControls(target.children[0]);
+}
 
 
 
 // Modal
 
 const modal = document.getElementById('modal');
-var currentSelected = null;
 
-function showModal(element) {
+function showModal() {
 	modal.style.display = 'block';
 	modal.style.zIndex = heighestZIndex++;
 
@@ -210,14 +250,11 @@ function showModal(element) {
 		}
 	});
 
-	currentSelected = element.parentElement;
-
 	modal.children[0].innerHTML = currentSelected.getAttribute('description');
 }
 
 function hideModal() {
-	if (currentSelected === null) return;
-	currentSelected = null;
+	modal.removeEventListener('click', clickOutsideModal);
 
 	anime({
 		targets: modal,
@@ -225,7 +262,6 @@ function hideModal() {
 		easing: 'easeOutQuint',
 		duration: 1000,
 		complete: () => {
-			modal.removeEventListener('click', clickOutsideModal);
 			modal.style.display = 'none';
 		}
 	});
@@ -233,6 +269,7 @@ function hideModal() {
 
 // Clicking outside the modal closes it
 function clickOutsideModal() {
+
 	anime({
 		targets: currentSelected.children[0],
 		scale: 1,
@@ -241,5 +278,8 @@ function clickOutsideModal() {
 		easing: 'easeOutQuint'
 	});
 
-	hideModal();
+	putBackSlider(currentSelected);
+
+	if (currentSelected === null) return;
+	currentSelected = null;
 }

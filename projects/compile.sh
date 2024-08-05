@@ -9,6 +9,9 @@ templateKey="<span id=\"template\"></span>"
 # Read the contents of blueprint
 blueprintContent=$(<"$blueprint")
 
+# Clean the build directory
+rm -rf "$outputDirectory"/*
+
 # Loop over all files in the given directory
 for template in "$directory"/*; do
 	if [ -f "$template" ]; then
