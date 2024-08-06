@@ -23,13 +23,13 @@ function getRandomInThreeQuadrants(width, height, size) {
 	switch (quadrant) {
 		case 0:
 			// Top-left
-			return [getRandomInRange(_padding, width / 2), getRandomInRange(_padding, height / 2)];
+			return [getRandomInRange(_padding / 2, width / 2), getRandomInRange(_padding, height / 2 - _padding * 3)];
 		case 1:
 			// Top-right
-			return [getRandomInRange(width / 2, width - _padding - size[0]), getRandomInRange(_padding, height / 2)];
+			return [getRandomInRange(width / 2, width - _padding * 2 - size[0]), getRandomInRange(_padding, height / 2)];
 		case 2:
 			// Bottom-right
-			return [getRandomInRange(width / 2, width - _padding - size[0]), getRandomInRange(height / 2, height - _padding - size[1])];
+			return [getRandomInRange(width / 2, width - _padding * 2 - size[0]), getRandomInRange(height / 2, height - _padding - size[1])];
 	}
 }
 

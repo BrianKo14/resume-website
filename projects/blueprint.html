@@ -32,14 +32,6 @@
 	<!-- MagicMouse.js -->
 	<script src="https://res.cloudinary.com/veseylab/raw/upload/v1684982764/magicmouse-2.0.0.cdn.min.js"></script>
 	<script>
-		// document.querySelectorAll('.slider').forEach(element => {
-		// 	const firstChild = element.firstElementChild;
-		// 	if (firstChild) {
-		// 		firstChild.classList.add('magic-hover');
-		// 		// firstChild.classList.add('magic-hover__square');
-		// 	}
-		// });
-
 		magicMouse({
 			"outerStyle": "circle",
 			"hoverEffect": "pointer-overlay", // TODO: circle-move
@@ -47,6 +39,16 @@
 			"defaultCursor": false,
 			"outerWidth": 30,
 			"outerHeight": 30
+		});
+
+		// Hide the magicPointer and magicMouseCursor when the mouse leaves the document
+		document.addEventListener('mouseleave', () => {
+			document.getElementById('magicPointer').style.display = 'none';
+			document.getElementById('magicMouseCursor').style.display = 'none';
+		});
+		document.addEventListener('mouseenter', () => {
+			document.getElementById('magicPointer').style.display = 'block';
+			document.getElementById('magicMouseCursor').style.display = 'block';
 		});
 	</script>
 

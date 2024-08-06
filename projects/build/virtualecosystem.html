@@ -27,19 +27,59 @@
 		<span class="tag">C#</span>
 		<span class="tag">Unity</span>
 	</div>
-	<p id="description">I recreated this project three times, simply because it's so much fun. The idea is the following: natural evolution isn't just evidenced in the physical world, but is also a logical conjecture about learning processes involving trial and error. Therefore, it can be demonstrated in a computer. In essence, my ecosystem consists of a canvas, and my living creatures are blobs of three types: food, primary and secondary consumers.</p>
+	<p id="description">The idea is the following: natural evolution isn't just evidenced in the physical world, but is also a logical conjecture about learning processes involving trial and error. It can be demonstrated in a computer, as a genetic algorithm. In essence, my ecosystem consists of a canvas, and my living creatures are blobs of three types: food, primary and secondary consumers (predators).</p>
 </div>
 
 <div id="project-scatter" class="select-disable">
 	<div class="slider"
-		description=""
+		description="I built a graphical interpretation of the ecosystem using Unity. You may note that the consumers' colors evolve as genetic traits (phenotypes) that work to identify their families. The little green drops are food, randomly distributed throughout the canvas at midnight, and the limiting resource. The brown feces results from eating seeds and help spread trees."
 	>
 		<img src="../../media/Projects/virtualecosystem/Screenshot 2022-06-30 at 14.36.19.png" alt=""/>
 	</div>
 	<div class="slider"
-		description=""
+		description="Over many iterations, we can observe how a predator's speed at instantiation results in dissimilar durations until population equilibrium."
 	>
 		<img src="../../media/Projects/virtualecosystem/Bildschirm­foto 2024-08-05 um 21.04.13.png" alt=""/>
+	</div>
+	<div class="slider"
+		description="Consumers reproduce asexually and in proportion to their current health status and to a mutation rate that can also be made to be an evolving genotype. These processes occur at midnight, and the offspring are placed in a random location near the parent."
+	>
+		<div class="video-container">
+			<video src="../../media/Projects/virtualecosystem/Bildschirmaufnahme 2024-08-06 um 12.08.01.mp4"></video>
+			<img class="play-button" src="../../media/Projects page/play_button.svg"></img>
+		</div>
+	</div>
+	<div class="slider"
+		description="Trees exemplify an entirely different reproductive strategy. Their growth depends on their symbiotic relationship with primary consumers, and bees. The former help spread seeds (red droppings they eat) through their feces, and the latter 'pollinate' them to aid their growth rate. Bee colonies can split and migrate to other trees, where they may succesfully build a hive."
+	>
+		<div class="video-container">
+			<video src="../../media/Projects/virtualecosystem/Bildschirmaufnahme 2024-08-06 um 12.13.33.mp4"></video>
+			<img class="play-button" src="../../media/Projects page/play_button.svg"></img>
+		</div>
+	</div>
+	<div class="slider"
+		description="Stabilizing the populations of primary and secondary consumers turned out to be a challenge on a flat canvas. In this video, you can observe the rapid decimation of primary consumers (thinner-edged blobs) and the subsequent extinction of secondary consumers (thicker-edged blobs). My goal was to find an equilibrium that could be predicted from initial conditions, such as the number of consumers and food or the size of the canvas."
+	>
+		<div class="video-container">
+			<video src="../../media/Projects/virtualecosystem/Recording 2024-08-05 231318_1.mp4"></video>
+			<img class="play-button" src="../../media/Projects page/play_button.svg"></img>
+		</div>
+	</div>
+	<div class="slider"
+		description="Another trade-off, for example, could charge a greater nutritional cost of survival over range of vision, which helps the consumer chase food."
+	>
+		<div class="video-container">
+			<video src="../../media/Projects/virtualecosystem/Recording 2024-08-06 114742_1.mp4"></video>
+			<img class="play-button" src="../../media/Projects page/play_button.svg"></img>
+		</div>
+	</div>
+	<div class="slider"
+		description="A very interesting experiment was to see how trade-offs could be made between different adventegous traits. For example, speed could be traded for size, exchanging a larger surface area for faster movement. In this case, conditional on a particular cross rate for these genotypes, speed becomes an immediate advantage, resulting in a smaller population. (The video is sped up for demonstration purposes.)"
+	>
+		<div class="video-container">
+			<video src="../../media/Projects/virtualecosystem/Recording 2024-08-06 114927_1.mp4"></video>
+			<img class="play-button" src="../../media/Projects page/play_button.svg"></img>
+		</div>
 	</div>
 </div>	
 
@@ -54,14 +94,6 @@
 	<!-- MagicMouse.js -->
 	<script src="https://res.cloudinary.com/veseylab/raw/upload/v1684982764/magicmouse-2.0.0.cdn.min.js"></script>
 	<script>
-		// document.querySelectorAll('.slider').forEach(element => {
-		// 	const firstChild = element.firstElementChild;
-		// 	if (firstChild) {
-		// 		firstChild.classList.add('magic-hover');
-		// 		// firstChild.classList.add('magic-hover__square');
-		// 	}
-		// });
-
 		magicMouse({
 			"outerStyle": "circle",
 			"hoverEffect": "pointer-overlay", // TODO: circle-move
@@ -69,6 +101,16 @@
 			"defaultCursor": false,
 			"outerWidth": 30,
 			"outerHeight": 30
+		});
+
+		// Hide the magicPointer and magicMouseCursor when the mouse leaves the document
+		document.addEventListener('mouseleave', () => {
+			document.getElementById('magicPointer').style.display = 'none';
+			document.getElementById('magicMouseCursor').style.display = 'none';
+		});
+		document.addEventListener('mouseenter', () => {
+			document.getElementById('magicPointer').style.display = 'block';
+			document.getElementById('magicMouseCursor').style.display = 'block';
 		});
 	</script>
 

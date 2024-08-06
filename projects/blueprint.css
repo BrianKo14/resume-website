@@ -162,6 +162,8 @@ body {
 
 .invert {
 	mix-blend-mode: difference;
+	width: 15px !important;
+	height: 15px !important;
 }
 
 #magicMouseCursor {
