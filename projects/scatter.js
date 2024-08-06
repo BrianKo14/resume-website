@@ -144,8 +144,8 @@ interact('.slider')
 	}
 })
 
-// DOUBLE TAP
-.on('doubletap', (event) => { if (!isMobile.matches && currentSelected === null) {
+// TAP
+.on('tap', (event) => { if (!isMobile.matches && currentSelected === null) {
 	const target = event.target.closest('.slider');
 	const firstChild = target.children[0];
 	event.preventDefault();
@@ -181,9 +181,11 @@ interact('.slider')
 sliders.forEach(slider => {
 	slider.addEventListener('mouseenter', () => {
 		document.getElementById('magicMouseCursor').style.opacity = 0;
+		document.getElementById('magicPointer').classList.add('invert');
 	});
 	slider.addEventListener('mouseleave', () => {
 		document.getElementById('magicMouseCursor').style.opacity = 1;
+		document.getElementById('magicPointer').classList.remove('invert');
 	});
 });
 
@@ -236,6 +238,7 @@ function hideVideoControls(target) {
 }
 
 function putBackSlider(target) {
+	if (currentSelected === null) return;
 
 	// Hide modal
 	hideModal();
@@ -243,7 +246,6 @@ function putBackSlider(target) {
 	// Hide video controls
 	hideVideoControls(target.children[0]);
 
-	if (currentSelected === null) return;
 	currentSelected = null;
 }
 

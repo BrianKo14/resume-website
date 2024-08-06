@@ -145,6 +145,8 @@ body {
 	font-style: normal;
 	color: white;
 
+	text-align: center; /* TODO: left align while centered */
+
 	margin: 20px;
 	width: 70%;	
 
@@ -158,8 +160,11 @@ body {
 	z-index: 1000;
 }
 
+.invert {
+	mix-blend-mode: difference;
+}
+
 #magicMouseCursor {
-	/* transform: rotate(45deg) !important; */
 }
 
 
@@ -193,7 +198,11 @@ body {
 		font-size: 10px;
 	}
 
-	.slider img {
+	.slider img, .slider video {
 		height: 200px;
+	}
+
+	.play-button {
+		display: none;
 	}
 }
