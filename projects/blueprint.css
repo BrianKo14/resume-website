@@ -42,6 +42,25 @@ body {
 	filter: grayscale(100%);
 }
 
+#bottom-caveat {
+	position: absolute;
+	bottom: -5px;
+	right: 60px;
+	height: 40px;
+
+	font-family: "Caveat", cursive;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-size: larger;
+	font-weight: 700;
+	color: #93b2db;
+	/* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+#bottom-caveat::after {
+	content: "(I made this webapp too!)";	
+}
+
 /* PROJECT INFO */
 
 #project-info {
@@ -181,7 +200,7 @@ body {
 	}
 
 	#project-info {
-		bottom: 30px;
+		bottom: 50px;
 		left: 30px;
 		width: 80%;
 	}
@@ -193,6 +212,16 @@ body {
 	#description {
 		font-size: 14px;
 		width: 90%;
+	}
+
+	#bottom-caveat {
+		bottom: 15px;
+		width: 100%;
+		right: 0;
+		text-align: center;
+	}
+	#bottom-caveat::after {
+		content: "Check out this app on your computer!";
 	}
 
 	.tag {
