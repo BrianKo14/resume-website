@@ -43,7 +43,7 @@ body {
 }
 
 #bottom-caveat {
-	position: absolute;
+	position: fixed;
 	bottom: -5px;
 	right: 60px;
 	height: 40px;
@@ -54,7 +54,6 @@ body {
 	font-size: larger;
 	font-weight: 700;
 	color: #93b2db;
-	/* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 #bottom-caveat::after {
