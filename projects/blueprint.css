@@ -57,7 +57,7 @@ body {
 }
 
 #bottom-caveat::after {
-	content: "(I made this webapp too!)";	
+	content: "(I made this web app too!)";	
 }
 
 /* PROJECT INFO */
