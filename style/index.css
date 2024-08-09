@@ -1,0 +1,122 @@
+html {
+	background-color: #f9f6ee;
+}
+
+/* BACKGROUND */
+
+#background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 300%;
+	overflow: hidden;
+}
+
+#background-image {
+	position: absolute;
+	top: -8%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 100%;
+	opacity: 0.2;
+	z-index: -2;
+}
+
+#border {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(100% - 30px);
+	height: 100%;
+	border: 15px solid rgba(255, 255, 255, 0.66);
+	z-index: -1;
+}
+
+#blur-right {
+	position: absolute;
+	top: -10vh;
+	right: 0;
+	width: 70%;
+	z-index: -1;
+}
+
+#blur-left {
+	position: absolute;
+	top: -20vh;
+	left: 0;
+	width: 80%;
+	z-index: -1;
+}
+
+#blur-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	min-width: 100%;
+	height: 230vh;
+	z-index: -1;
+	overflow: hidden;
+}
+
+
+/* HEADER */
+
+#header {
+	position: absolute;
+	top: 47%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+#title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 40vw;
+	min-width: 200px;
+}
+
+#subtitle {
+	position: absolute;
+	top: calc(50% + 30px);
+	left: 13%;
+	font-family: "Libre Baskerville", serif;
+	font-weight: 400;
+	font-style: italic;
+	/* font-size: 1.6vw; */
+	font-size: larger;
+}
+
+#line {
+	position: absolute;
+	top: 63.5%;
+	left: 37%;
+	width: 70%;
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+
+	/* BACKGROUND */
+
+	#blur-right {
+		top: -5vh;
+		width: 100%;
+	}
+
+	#blur-left {
+		top: 20vh;
+		width: 100%;
+	}
+
+
+	/* HEADER */
+
+	#title {
+		width: 70vw;
+	}
+}
+    
