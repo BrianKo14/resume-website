@@ -152,10 +152,13 @@ interact('.slider')
 
 	let rotation = parseFloat(target.getAttribute('data-rotation'));
 
+	// Set scaling factor to reach 60% of the screen width
+	let scalingFactor = window.innerHeight * 0.6 / firstChild.offsetHeight;
+
 	// Enlargen and rotate
 	anime({
 		targets: firstChild,
-		scale: 1.8,
+		scale: scalingFactor,
 		rotate: -rotation,
 		duration: 1000,
 		easing: 'easeOutQuint'

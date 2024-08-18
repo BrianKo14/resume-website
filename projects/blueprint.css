@@ -236,3 +236,24 @@ body {
 		display: none;
 	}
 }
+
+/* MOBILE / TABLET LANDSCAPE */
+
+@media only screen and (max-width: 1200px) {
+	#project-info {
+		width: 45%;
+	}
+
+	#title {
+		font-size: 20px;
+	}
+
+	#description {
+		font-size: 14px;
+		width: 90%;
+	}
+
+	.slider img, .slider video {
+		height: 200px;
+	}
+}
