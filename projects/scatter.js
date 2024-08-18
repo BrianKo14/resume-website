@@ -152,8 +152,7 @@ interact('.slider')
 
 	let rotation = parseFloat(target.getAttribute('data-rotation'));
 
-	// Set scaling factor to reach 60% of the screen width
-	let scalingFactor = window.innerHeight * 0.6 / firstChild.offsetHeight;
+	let scalingFactor = getSliderScalingFactor(firstChild);
 
 	// Enlargen and rotate
 	anime({
@@ -250,6 +249,17 @@ function putBackSlider(target) {
 	hideVideoControls(target.children[0]);
 
 	currentSelected = null;
+}
+
+function getSliderScalingFactor(currentSlider) {
+	let aspectRatio = window.innerHeight / window.innerWidth;
+	let scalingFactor = window.innerHeight * 0.6 / currentSlider.offsetHeight;
+
+	if (aspectRatio > 1.1) {
+		scalingFactor = Math.min(scalingFactor, 1.6);
+	}
+
+	return scalingFactor;
 }
 
 // Modal
